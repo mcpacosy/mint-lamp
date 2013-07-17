@@ -9,6 +9,8 @@ Most of the commands will run without user interaction.
 
 Keywords: lamp, linux, mint, ubuntu, php, apache, mysql, phpmyadmin
 
+Tested with: Ubuntu Server 12.04 LTS x64, Linux Mint 15 x64
+
 Installation
 ============
 
