@@ -11,12 +11,9 @@ then
 	exit 1
 fi
 
-export DEBIAN_FRONTEND=noninteractive
-
 echo "********************************"
 echo "    LAMP installation script"
 echo "********************************"
-read -s -p "> MySQL root password: " mysqlpass
 
 apt-get -y install apache2
 
@@ -47,9 +44,6 @@ else
 fi
 
 rm /var/www/__test__.php
-
-debconf-set-selections <<< "mysql-server mysql-server/root_password $mysqlpass"
-debconf-set-selections <<< "mysql-server mysql-server/root_password_again $mysqlpass"
 
 apt-get -y install mysql-server
 
