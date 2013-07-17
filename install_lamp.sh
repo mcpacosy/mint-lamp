@@ -3,13 +3,20 @@
 # author: Martin Clauß - mc@informatik.uni-leipzig.de
 # created: July 14 2013
 
-# http://community.linuxmint.com/tutorial/view/486
+# This script is based on this tutorial: http://community.linuxmint.com/tutorial/view/486
 
 if [[ $UID -ne 0 ]];
 then
 	echo "You must be root to run this script. Exiting..."
 	exit 1
 fi
+
+export DEBIAN_FRONTEND=noninteractive
+
+echo "********************************"
+echo "    LAMP installation script"
+echo "********************************"
+read -s -p "> MySQL root password: " mysqlpass
 
 apt-get -y install apache2
 
@@ -40,6 +47,9 @@ else
 fi
 
 rm /var/www/__test__.php
+
+debconf-set-selections <<< "mysql-server mysql-server/root_password $mysqlpass"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again $mysqlpass"
 
 apt-get -y install mysql-server
 
