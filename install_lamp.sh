@@ -35,7 +35,7 @@ then
 	rm /var/www/__test__.php
 	exit 1
 else
-	if [[ $(wget -q -O - "http://localhost/__test__.php" | grep -i php) == "" ]]
+	if [[ $(wget -q -O - "http://localhost/__test__.php" | grep "PHP Version") == "" ]]
 	then
 		echo "PHP is not running correctly. Exiting..."
 		rm /var/www/__test__.php
